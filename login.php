@@ -21,11 +21,23 @@ if(isset($_POST['loginSubmit'])) {
 
          $user_pass = $email_pass['password'];
 
+         $_SESSION['fname'] = $email_pass['fname'];
+
         $pass_decode = password_verify($password, $user_pass);
 
             if($pass_decode){
               echo "login successfully";
-              header('location:profile.php');
+                ?>
+
+               <script type="text/javascript">
+                location.replace("profile.php");
+               </script>
+
+
+              
+
+                 <?php 
+
             } else {
                 echo "Password incorrect";
             }
